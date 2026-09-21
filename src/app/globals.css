@@ -58,6 +58,7 @@ body {
   font-family: var(--font-instrument), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -68,6 +69,23 @@ body {
 :focus-visible {
   outline: 3px solid var(--bata);
   outline-offset: 2px;
+}
+
+/* Isi grid boleh menyempit mengikuti layar, walau hurufnya dibesarkan. */
+.grid > * {
+  min-width: 0;
+}
+
+/* Huruf besar: menu desktop disembunyikan, diganti tombol Menu yang lebih lega. */
+html[data-huruf] .nav-desktop,
+html[data-huruf] .wa-header {
+  display: none;
+}
+html[data-huruf] .tombol-menu {
+  display: flex;
+}
+html[data-huruf] .menu-hp {
+  display: block;
 }
 
 /* Judul: Fraunces dengan sumbu SOFT supaya terasa seperti buku cetak, bukan template. */

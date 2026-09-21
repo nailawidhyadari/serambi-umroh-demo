@@ -82,7 +82,7 @@ export default async function DetailPaket({ params }: PageProps<"/paket/[slug]">
                   <span className="block text-sm text-tinta-3">Mulai</span>
                   <span className="font-mono text-2xl font-semibold">{hargaTeks(p, hargaMulai(p))}</span>
                 </p>
-                <a href="#pesan" className="rounded-xl bg-tinta px-5 py-3.5 font-semibold text-kertas hover:bg-hijau lg:hidden">
+                <a href="#pesan" className="rounded-xl bg-tinta px-5 py-3.5 font-semibold text-kertas hover:bg-hijau xl:hidden">
                   Pilih tanggal & pesan
                 </a>
               </div>
@@ -94,7 +94,7 @@ export default async function DetailPaket({ params }: PageProps<"/paket/[slug]">
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_24rem] lg:gap-14">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 xl:grid-cols-[1fr_24rem] xl:gap-14">
         <div className="min-w-0">
           {/* KARTU FAKTA */}
           <section aria-labelledby="fakta" className="rounded-2xl border-2 border-tinta bg-kertas-3">
@@ -235,7 +235,7 @@ export default async function DetailPaket({ params }: PageProps<"/paket/[slug]">
         </div>
 
         {/* PANEL PESAN */}
-        <aside id="pesan" className="lg:sticky lg:top-24 lg:self-start">
+        <aside id="pesan" className="scroll-mt-24 xl:sticky xl:top-24 xl:self-start">
           {jadwal.length > 0 ? (
             <Daftar p={p} jadwal={jadwal} kurs={site.kurs} />
           ) : (
@@ -260,7 +260,7 @@ export default async function DetailPaket({ params }: PageProps<"/paket/[slug]">
 
 function Fakta({ label, nilai, ikon }: { label: string; nilai: React.ReactNode; ikon?: React.ReactNode }) {
   return (
-    <div className="grid gap-1 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-4">
+    <div className="grid gap-1 py-3.5 sm:grid-cols-[minmax(8rem,11rem)_minmax(0,1fr)] sm:gap-4">
       <dt className="flex items-center gap-2 font-semibold">
         {ikon}
         {label}

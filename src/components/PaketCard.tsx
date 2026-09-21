@@ -33,7 +33,7 @@ export function PaketCard({ p }: { p: Paket }) {
             <JarakHotel key={h.kota} h={h} ringkas />
           ))}
         </div>
-        <div className="mt-auto flex items-end justify-between gap-3 pt-5">
+        <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-5">
           <div>
             <p className="text-xs uppercase tracking-[0.14em] text-tinta-3">Mulai</p>
             <p className="font-mono text-xl font-semibold">{hargaTeks(p, mulai)}</p>

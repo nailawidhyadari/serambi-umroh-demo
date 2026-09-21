@@ -74,7 +74,7 @@ export function PapanJadwal({ baris, filter = true, batas }: { baris: BarisJadwa
       )}
 
       <div className="overflow-hidden rounded-2xl border border-tinta/15 bg-kertas-3">
-        <div className="hidden grid-cols-[8.5rem_1fr_11rem_9rem_10rem] gap-4 border-b border-tinta/15 bg-tinta px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-kertas/75 md:grid">
+        <div className="hidden grid-cols-[7.5rem_minmax(0,1fr)_minmax(0,10rem)_9rem_9rem] gap-4 border-b border-tinta/15 bg-tinta px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-kertas/75 lg:grid">
           <span>Berangkat</span>
           <span>Paket</span>
           <span>Pesawat</span>
@@ -88,23 +88,23 @@ export function PapanJadwal({ baris, filter = true, batas }: { baris: BarisJadwa
             const st = statusKursi({ tanggal: b.tanggal, kuota: b.kuota, terisi: b.terisi });
             const penuh = st.tone === "penuh";
             return (
-              <li key={b.slug + b.tanggal} className={`grid grid-cols-[4.5rem_1fr] items-center gap-x-4 gap-y-2 border-b border-garis px-4 py-4 last:border-0 md:grid-cols-[8.5rem_1fr_11rem_9rem_10rem] md:px-5 ${penuh ? "opacity-60" : ""}`}>
-                <div className="row-span-2 md:row-span-1">
-                  <p className="font-mono text-3xl font-semibold leading-none md:inline md:text-2xl">{t.tgl}</p>
-                  <p className="mt-1 text-sm font-semibold uppercase md:ml-2 md:inline">{t.bulan} {String(t.tahun).slice(2)}</p>
+              <li key={b.slug + b.tanggal} className={`grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-x-4 gap-y-2 border-b border-garis px-4 py-4 last:border-0 lg:grid-cols-[7.5rem_minmax(0,1fr)_minmax(0,10rem)_9rem_9rem] lg:px-5 ${penuh ? "opacity-60" : ""}`}>
+                <div className="row-span-2 lg:row-span-1">
+                  <p className="font-mono text-3xl font-semibold leading-none lg:inline lg:text-2xl">{t.tgl}</p>
+                  <p className="mt-1 text-sm font-semibold uppercase lg:ml-2 lg:inline">{t.bulan} {String(t.tahun).slice(2)}</p>
                   <p className="text-xs text-tinta-3">{t.hari}</p>
                 </div>
                 <div className="min-w-0">
                   <Link href={`/paket/${b.slug}`} className="judul text-xl hover:text-hijau hover:underline">{b.nama}</Link>
                   <p className="text-sm text-tinta-3">{t.rentang} · {b.hari} hari</p>
                 </div>
-                <p className="hidden text-sm md:block">
+                <p className="hidden text-sm lg:block">
                   {b.maskapai}
                   <br />
                   <span className="text-tinta-3">{b.langsung ? "Langsung" : "1× transit"}</span>
                 </p>
-                <p className="col-start-2 font-mono text-sm font-semibold md:col-start-auto md:text-base">{b.harga}</p>
-                <div className="col-span-2 flex items-center justify-between gap-3 md:col-span-1 md:flex-col md:items-end md:gap-1.5">
+                <p className="col-start-2 font-mono text-sm font-semibold lg:col-start-auto lg:text-base">{b.harga}</p>
+                <div className="col-span-2 flex items-center justify-between gap-3 lg:col-span-1 lg:flex-col lg:items-end lg:gap-1.5">
                   <span className={`rounded-full px-3 py-1 text-sm font-semibold ${TONE[st.tone]}`}>{st.label}</span>
                   {!penuh ? (
                     <a href={waLink(b.pesan)} target="_blank" rel="noopener" className="text-sm font-semibold text-hijau underline underline-offset-4 hover:text-hijau-2">
@@ -117,7 +117,7 @@ export function PapanJadwal({ baris, filter = true, batas }: { baris: BarisJadwa
                   )}
                 </div>
                 {!penuh && (
-                  <div className="col-span-2 md:col-span-5" aria-hidden>
+                  <div className="col-span-2 lg:col-span-5" aria-hidden>
                     <div className="h-1 overflow-hidden rounded-full bg-kertas-2">
                       <div className={`h-full ${st.tone === "tipis" ? "bg-bata" : "bg-hijau-2"}`} style={{ width: `${(b.terisi / b.kuota) * 100}%` }} />
                     </div>

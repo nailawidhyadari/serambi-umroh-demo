@@ -23,7 +23,7 @@ export function Header() {
         <span onClick={() => setBuka(false)}>
           <Logo />
         </span>
-        <nav aria-label="Menu utama" className="ml-4 hidden items-center gap-0.5 xl:flex">
+        <nav aria-label="Menu utama" className="nav-desktop ml-4 hidden items-center gap-0.5 xl:flex">
           {NAV.map((n) => {
             const aktif = path.startsWith(n.href);
             return (
@@ -41,12 +41,12 @@ export function Header() {
           })}
         </nav>
         <div className="ml-auto flex items-center gap-2">
-          <UkuranHuruf className="hidden sm:flex" />
+          <UkuranHuruf className="hidden shrink-0 sm:flex" />
           <a
             href={waLink("Assalamu'alaikum, Serambi. Saya ingin tanya-tanya soal umroh.")}
             target="_blank"
             rel="noopener"
-            className="hidden items-center gap-2 rounded-full bg-hijau px-4 py-2.5 text-[0.95rem] font-semibold whitespace-nowrap text-kertas transition hover:bg-hijau-2 md:inline-flex"
+            className="wa-header hidden items-center gap-2 rounded-full bg-hijau px-4 py-2.5 text-[0.95rem] font-semibold whitespace-nowrap text-kertas transition hover:bg-hijau-2 md:inline-flex"
           >
             <WaIcon className="size-5" /> Tanya via WhatsApp
           </a>
@@ -55,20 +55,20 @@ export function Header() {
             onClick={() => setBuka((b) => !b)}
             aria-expanded={buka}
             aria-controls="menu-hp"
-            className="flex h-11 items-center gap-2 rounded-full border border-tinta/20 px-4 font-semibold xl:hidden"
+            className="tombol-menu flex h-11 shrink-0 items-center gap-2 rounded-full border border-tinta/20 px-4 font-semibold xl:hidden"
           >
             <span className="relative block h-3 w-4" aria-hidden>
               <span className={`absolute left-0 top-0 h-0.5 w-4 bg-current transition ${buka ? "top-1.5 rotate-45" : ""}`} />
               <span className={`absolute left-0 top-1.5 h-0.5 w-4 bg-current transition ${buka ? "opacity-0" : ""}`} />
               <span className={`absolute left-0 top-3 h-0.5 w-4 bg-current transition ${buka ? "top-1.5 -rotate-45" : ""}`} />
             </span>
-            Menu
+            <span className="max-[359px]:sr-only">Menu</span>
           </button>
         </div>
       </div>
 
       {buka && (
-        <div id="menu-hp" className="muncul fixed inset-x-0 bottom-0 top-[4.5rem] overflow-y-auto bg-kertas px-4 pb-10 pt-4 xl:hidden">
+        <div id="menu-hp" className="menu-hp muncul fixed inset-x-0 bottom-0 top-[4.5rem] overflow-y-auto bg-kertas px-4 pb-10 pt-4 xl:hidden">
           <nav aria-label="Menu" className="flex flex-col">
             {NAV.map((n, i) => (
               <Link

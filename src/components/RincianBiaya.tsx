@@ -17,9 +17,10 @@ export function RincianBiaya({ p, kamar = "quad" }: { p: Paket; kamar?: keyof Pa
         {p.rincian.map((r, i) => (
           <li key={r.pos} className="flex items-baseline gap-3 border-b border-dashed border-garis py-2.5">
             <span className="size-3 shrink-0 translate-y-0.5 rounded-sm" style={{ background: WARNA[i % WARNA.length] }} />
-            <span className="flex-1">{r.pos}</span>
-            <span className="font-mono text-sm text-tinta-3">{r.persen}%</span>
-            <span className="w-28 text-right font-mono text-sm font-semibold">
+            <span className="min-w-0 flex-1">
+              {r.pos} <span className="whitespace-nowrap font-mono text-sm text-tinta-3">{r.persen}%</span>
+            </span>
+            <span className="shrink-0 whitespace-nowrap text-right font-mono text-sm font-semibold">
               {hargaTeks(p, Math.round((total * r.persen) / 100 / (p.mata === "USD" ? 10 : 10_000)) * (p.mata === "USD" ? 10 : 10_000))}
             </span>
           </li>

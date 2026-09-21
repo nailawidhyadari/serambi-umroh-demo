@@ -48,18 +48,22 @@ export function Daftar({ p, jadwal, kurs }: Props) {
 
       <fieldset className="mt-5">
         <legend className="mb-2 text-sm font-semibold">2. Pilih kamar</legend>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="space-y-2">
           {(Object.keys(p.harga) as Kamar[]).map((k) => (
             <label
               key={k}
-              className={`cursor-pointer rounded-xl border px-2 py-3 text-center transition ${
+              className={`flex cursor-pointer items-center gap-3 rounded-xl border px-3.5 py-3 transition ${
                 kamar === k ? "border-hijau bg-hijau-muda/60" : "border-tinta/15 hover:border-tinta/40"
               }`}
             >
-              <input type="radio" name="kamar" value={k} checked={kamar === k} onChange={() => setKamar(k)} className="sr-only" />
-              <span className="block font-semibold">{KAMAR_LABEL[k].nama}</span>
-              <span className="block text-xs text-tinta-3">{KAMAR_LABEL[k].isi}</span>
-              <span className="mt-1 block font-mono text-sm font-semibold">{hargaTeks(p, p.harga[k])}</span>
+              <input type="radio" name="kamar" value={k} checked={kamar === k} onChange={() => setKamar(k)} className="size-5 shrink-0 accent-[var(--hijau)]" />
+              <span className="flex min-w-0 flex-1 flex-wrap items-center justify-between gap-x-3 gap-y-1">
+                <span>
+                  <span className="block font-semibold">{KAMAR_LABEL[k].nama}</span>
+                  <span className="block text-sm text-tinta-3">{KAMAR_LABEL[k].isi}</span>
+                </span>
+                <span className="whitespace-nowrap font-mono font-semibold">{hargaTeks(p, p.harga[k])}</span>
+              </span>
             </label>
           ))}
         </div>

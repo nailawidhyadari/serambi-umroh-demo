@@ -120,7 +120,7 @@ export function Kalkulator({ daftar, kurs }: { daftar: Paket[]; kurs: number }) 
       <aside className="lg:sticky lg:top-24 lg:self-start">
         <div className="rounded-2xl bg-hijau p-6 text-kertas">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-kertas/65">Perkiraan total</p>
-          <p className="mt-1 font-mono text-4xl font-semibold" aria-live="polite">{rupiah(hitung.total)}</p>
+          <p className="mt-1 break-all font-mono text-3xl font-semibold sm:text-4xl" aria-live="polite">{rupiah(hitung.total)}</p>
           <dl className="mt-5 space-y-2 border-t border-kertas/20 pt-4 text-[0.95rem]">
             <Row k={`Paket (${dewasa}${bayi ? ` + ${bayi} bayi` : ""} × ${rupiah(hitung.hargaOrang)})`} v={rupiah(hitung.paket)} />
             {hitung.biayaPaspor > 0 && <Row k="Paspor" v={rupiah(hitung.biayaPaspor)} />}
@@ -194,7 +194,7 @@ function Stepper({ value, set, min, max }: { value: number; set: (n: number) => 
 
 function Row({ k, v }: { k: string; v: string }) {
   return (
-    <div className="flex justify-between gap-3">
+    <div className="flex flex-wrap justify-between gap-x-3">
       <dt className="text-kertas/75">{k}</dt>
       <dd className="font-mono">{v}</dd>
     </div>
