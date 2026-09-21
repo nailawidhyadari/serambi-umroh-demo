@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  --kertas: #f5efe2;
+  --kertas-2: #ebe2cf;
+  --kertas-3: #fbf8f1;
+  --tinta: #17241e;
+  --tinta-2: #3f4a43;
+  --tinta-3: #66706a;
+  --garis: #d6cab0;
+  --hijau: #1d4b3a;
+  --hijau-2: #2c6a52;
+  --hijau-muda: #d9e4d5;
+  --bata: #b0442a;
+  --bata-muda: #f3d9cc;
+  --emas: #a8812f;
+  --kuning: #efd28a;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-kertas: var(--kertas);
+  --color-kertas-2: var(--kertas-2);
+  --color-kertas-3: var(--kertas-3);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-tinta-3: var(--tinta-3);
+  --color-garis: var(--garis);
+  --color-hijau: var(--hijau);
+  --color-hijau-2: var(--hijau-2);
+  --color-hijau-muda: var(--hijau-muda);
+  --color-bata: var(--bata);
+  --color-bata-muda: var(--bata-muda);
+  --color-emas: var(--emas);
+  --color-kuning: var(--kuning);
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-instrument);
+  --font-mono: var(--font-plex-mono);
+  --font-arab: var(--font-amiri);
+}
+
+/* Ukuran huruf bisa dibesarkan lewat tombol "A+" di header. */
+html {
+  font-size: 106.25%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+html[data-huruf="besar"] {
+  font-size: 118.75%;
+}
+html[data-huruf="sangat"] {
+  font-size: 131.25%;
+}
+
+body {
+  background: var(--kertas);
+  color: var(--tinta);
+  font-family: var(--font-instrument), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--kuning);
+  color: var(--tinta);
+}
+
+:focus-visible {
+  outline: 3px solid var(--bata);
+  outline-offset: 2px;
+}
+
+/* Judul: Fraunces dengan sumbu SOFT supaya terasa seperti buku cetak, bukan template. */
+.judul {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-variation-settings: "SOFT" 60, "WONK" 0;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+.judul-miring {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-weight: 420;
+}
+
+.arab {
+  font-family: var(--font-amiri), serif;
+  direction: rtl;
+  line-height: 2;
+}
+
+/* Garis tipis ganda ala kepala halaman buku. */
+.garis-ganda {
+  border-top: 1px solid var(--tinta);
+  box-shadow: 0 3px 0 -2px var(--tinta);
+}
+
+/* Tekstur kertas tipis. */
+.serat {
+  position: relative;
+  isolation: isolate;
+}
+.serat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.18 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Stempel miring untuk legalitas. */
+.stempel {
+  border: 2px solid currentColor;
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+  transform: rotate(-4deg);
+}
+
+/* Garis bawah tangan untuk kata penting di judul. */
+.coret {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 40 3, 90 11, 130 6 S 185 4, 198 7' fill='none' stroke='%23b0442a' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 0.32em;
+  background-position: 0 96%;
+  padding-bottom: 0.05em;
+}
+
+/* Istilah yang bisa diketuk. */
+.istilah {
+  text-decoration: underline dotted var(--hijau-2);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: help;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .plus {
+  transform: rotate(45deg);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.muncul {
+  animation: muncul 0.35s ease-out both;
+}
+
+@keyframes putar {
+  to {
+    stroke-dashoffset: -60;
+  }
+}
+.putar-tawaf {
+  stroke-dasharray: 6 9;
+  animation: putar 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .muncul,
+  .putar-tawaf {
+    animation: none;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  .print-full {
+    break-inside: avoid;
+  }
+}
