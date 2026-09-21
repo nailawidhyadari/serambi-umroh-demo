@@ -18,6 +18,7 @@ export function Header() {
   }, [buka]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-tinta/10 bg-kertas/92 backdrop-blur-md">
       <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center gap-4 px-4 sm:px-6">
         <span onClick={() => setBuka(false)}>
@@ -57,18 +58,20 @@ export function Header() {
             aria-controls="menu-hp"
             className="tombol-menu flex h-11 shrink-0 items-center gap-2 rounded-full border border-tinta/20 px-4 font-semibold xl:hidden"
           >
-            <span className="relative block h-3 w-4" aria-hidden>
-              <span className={`absolute left-0 top-0 h-0.5 w-4 bg-current transition ${buka ? "top-1.5 rotate-45" : ""}`} />
+            <span className="relative block h-3 w-4 shrink-0" aria-hidden>
+              <span className={`absolute left-0 top-0 h-0.5 w-4 bg-current transition ${buka ? "translate-y-1.5 rotate-45" : ""}`} />
               <span className={`absolute left-0 top-1.5 h-0.5 w-4 bg-current transition ${buka ? "opacity-0" : ""}`} />
-              <span className={`absolute left-0 top-3 h-0.5 w-4 bg-current transition ${buka ? "top-1.5 -rotate-45" : ""}`} />
+              <span className={`absolute left-0 top-3 h-0.5 w-4 bg-current transition ${buka ? "-translate-y-1.5 -rotate-45" : ""}`} />
             </span>
-            <span className="max-[359px]:sr-only">Menu</span>
+            <span className="max-[359px]:sr-only">{buka ? "Tutup" : "Menu"}</span>
           </button>
         </div>
       </div>
+    </header>
 
+      {/* Panel menu di luar <header>: backdrop-blur di header membuat elemen fixed terkurung setinggi header. */}
       {buka && (
-        <div id="menu-hp" className="menu-hp muncul fixed inset-x-0 bottom-0 top-[4.5rem] overflow-y-auto bg-kertas px-4 pb-10 pt-4 xl:hidden">
+        <div id="menu-hp" className="menu-hp muncul fixed inset-x-0 bottom-0 top-[4.5rem] z-[55] overflow-y-auto overscroll-contain bg-kertas px-4 pb-10 pt-4 xl:hidden">
           <nav aria-label="Menu" className="flex flex-col">
             {NAV.map((n, i) => (
               <Link
@@ -96,6 +99,6 @@ export function Header() {
           </a>
         </div>
       )}
-    </header>
+    </>
   );
 }
